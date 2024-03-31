@@ -19,6 +19,7 @@ export const SONG_CONTEXT_MENU_ITEMS: SetContextMenuItems = [
     { id: 'addToFavorites' },
     { divider: true, id: 'removeFromFavorites' },
     { children: true, disabled: false, id: 'setRating' },
+    { divider: true, id: 'similarSongs'}
 ];
 
 export const PLAYLIST_SONG_CONTEXT_MENU_ITEMS: SetContextMenuItems = [

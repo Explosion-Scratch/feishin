@@ -25,6 +25,7 @@ import {
     RiPlayListAddFill,
     RiStarFill,
     RiCloseCircleLine,
+    RiFileList3Fill,
 } from 'react-icons/ri';
 import { AnyLibraryItems, LibraryItem, ServerType, AnyLibraryItem } from '/@/renderer/api/types';
 import {
@@ -53,6 +54,7 @@ import {
 } from '/@/renderer/store';
 import { usePlaybackType } from '/@/renderer/store/settings.store';
 import { Play, PlaybackType } from '/@/renderer/types';
+import { generatePath, useNavigate } from 'react-router';
 
 type ContextMenuContextProps = {
     closeContextMenu: () => void;
@@ -627,6 +629,13 @@ export const ContextMenuProvider = ({ children }: ContextMenuProviderProps) => {
         ctx.tableApi?.deselectAll();
     }, [ctx.tableApi]);
 
+    const navigate = useNavigate();
+    const handleSimilarSongs = useCallback(() => {
+      console.log(ctx)
+      return navigate(generatePath(AppRoute.LIBRARY_SONGS_SIMILAR, { songId: ctx.data[0].id }));
+    }, [ctx.dataNodes]);
+
+    // TODO: Add similar songs
     const contextMenuItems: Record<ContextMenuItemType, ContextMenuItem> = useMemo(() => {
         return {
             addToFavorites: {
@@ -705,6 +714,12 @@ export const ContextMenuProvider = ({ children }: ContextMenuProviderProps) => {
                 label: t('page.contextMenu.removeFromQueue', { postProcess: 'sentenceCase' }),
                 leftIcon: <RiDeleteBinFill size="1.1rem" />,
                 onClick: handleRemoveSelected,
+            },
+            similarSongs: {
+                id: 'similarSongs',
+                label: t('page.contextMenu.similarSongs', { postProcess: 'sentenceCase' }),
+                leftIcon: <RiFileList3Fill size="1.1rem" />,
+                onClick: handleSimilarSongs,
             },
             setRating: {
                 children: [

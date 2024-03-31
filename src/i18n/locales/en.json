@@ -15,6 +15,7 @@
         "removeFromPlaylist": "remove from $t(entity.playlist_one)",
         "removeFromQueue": "remove from queue",
         "setRating": "set rating",
+        "similarSongs": "similar songs",
         "toggleSmartPlaylistEditor": "toggle $t(entity.smartPlaylist) editor",
         "viewPlaylists": "view $t(entity.playlist_other)",
         "openIn": {
@@ -306,7 +307,8 @@
             "removeFromFavorites": "$t(action.removeFromFavorites)",
             "removeFromPlaylist": "$t(action.removeFromPlaylist)",
             "removeFromQueue": "$t(action.removeFromQueue)",
-            "setRating": "$t(action.setRating)"
+            "setRating": "$t(action.setRating)",
+            "similarSongs": "$t(action.similarSongs)"
         },
         "fullscreenPlayer": {
             "config": {
